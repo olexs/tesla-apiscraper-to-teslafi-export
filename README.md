@@ -14,7 +14,7 @@ This is a toolkit to export your data from [tesla-apiscraper](https://github.com
 
 ### Part 1: Exporting the API Scraper InfluxDB data into CSV
 
-1. Download or clone the [tesla-api-scraper-to-teslafi-export](https://github.com/olexs/tesla-api-scraper-to-teslafi-export) repository into a folder on your machine.
+1. Download or clone the [tesla-apiscraper-to-teslafi-export](https://github.com/olexs/tesla-apiscraper-to-teslafi-export) repository into a folder on your machine.
 
 2. Place the `tesla-apiscraper` data folder *contents* (*data*, *meta* and *wal* folders) into the `influxdb-data` folder, next to the `influxdb-export.sh` file. The folder structure must look like this:
 
@@ -44,4 +44,23 @@ This is a toolkit to export your data from [tesla-apiscraper](https://github.com
 
    This may take a little while. After the process has finished, if there are no errors reported, continue with the next part of the instructions.
 
-### Part 2: Converting exported CSV to TeslaFi CSV and fixing up the data
+### Part 2: Converting exported InfluxDB CSV files to TeslaFi CSV
+
+1. Obtain your Tesla's **vehicle ID** number. It's a 10- or 11-digit number that uniquely identifies your car, and is part of the TeslaFi data format, but it's not included in tesla-apiscraper data - so you need to source it separately. There are several ways you can get it:
+
+   - Manually using the Tesla API. The number is listed under `vehicle_id` in the `vehicles` response, as documented here: [https://tesla-api.timdorr.com/api-basics/vehicles](https://tesla-api.timdorr.com/api-basics/vehicles).
+   - From the database of another Tesla API tracker you're already using, such as TeslaMate.
+
+2. Run the `teslafi-convert.sh` script (or `teslafi-convert.bat` if you're on Windows). It will do the following:
+
+   - Create the `teslafi-csv` output folder, if it doesn't exist yet
+   - Build and start a Docker container with the `converter` app and its few dependencies, with the `influxdb-csv` and `teslafi-csv` folders mounted (on Windows, you may need to allow your Docker to access the drive you are working on for the mounts to work)
+   - Ask you for the vehicle ID mentioned above
+   - Process the CSV files in the `influxdb-csv` folder. This may taks a couple minutes. Progress is displayed as the converter works its way through the files
+   - Stop and delete the Docker container
+
+   The finished TeslaFi-compatible CSV files are now located in the `teslafi-csv` folder. Do with them as you please.
+
+## Troubleshooting
+
+This has not been tested very much. I know it runs with my personal dataset :) But your experience may differ. If there are any problems, feel free to open an issue in this repository - I'll look into it as soon as possible.

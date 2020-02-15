@@ -1,8 +1,9 @@
 .vscode
 
-apiscraper_to_teslafi_converter/node_modules
+converter/node_modules
 
 influxdb-data/data
 influxdb-data/meta
 influxdb-data/wal
 influxdb-csv
+teslafi-csv

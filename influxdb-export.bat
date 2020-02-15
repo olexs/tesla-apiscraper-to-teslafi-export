@@ -1,7 +1,5 @@
 @echo off
 
-echo Creating output folder
-
 if not exist "influxdb-csv" mkdir "influxdb-csv"
 
 echo Starting InfluxDB container

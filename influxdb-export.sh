@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "Creating output folder"
-
 mkdir -p influxdb-csv
 
 echo "Starting InfluxDB container"
