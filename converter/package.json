@@ -9,9 +9,9 @@
   "author": "Olex S.",
   "license": "ISC",
   "dependencies": {
-    "csvtojson": "^2.0.10",
-    "n-readlines": "^1.0.0",
-    "readline-sync": "^1.4.10"
+    "csvtojson": "2.0.10",
+    "n-readlines": "1.0.0",
+    "readline-sync": "1.4.10"
   },
   "private": true
 }
