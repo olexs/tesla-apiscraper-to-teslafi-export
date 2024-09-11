@@ -4,7 +4,7 @@ mkdir -p influxdb-csv
 
 echo "Starting InfluxDB container"
 
-docker run -td -v "$(pwd)/influxdb-data:/var/lib/influxdb" -v "$(pwd)/influxdb-csv:/opt/csv" -e INFLUXDB_DB="tesla" --rm --name apiscraper-export-influxdb influxdb:latest
+docker run -td -v "$(pwd)/influxdb-data:/var/lib/influxdb" -v "$(pwd)/influxdb-csv:/opt/csv" -e INFLUXDB_DB="tesla" --rm --name apiscraper-export-influxdb influxdb:1.8
 
 until [ "`docker inspect -f {{.State.Status}} apiscraper-export-influxdb`"=="running" ]; do
     sleep 0.1;

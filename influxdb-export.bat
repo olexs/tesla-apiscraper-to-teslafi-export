@@ -4,7 +4,7 @@ if not exist "influxdb-csv" mkdir "influxdb-csv"
 
 echo Starting InfluxDB container
 
-docker run -td -v "%cd%/influxdb-data:/var/lib/influxdb" -v "%cd%/influxdb-csv:/opt/csv" -e INFLUXDB_DB="tesla" --rm --name apiscraper-export-influxdb influxdb:latest
+docker run -td -v "%cd%/influxdb-data:/var/lib/influxdb" -v "%cd%/influxdb-csv:/opt/csv" -e INFLUXDB_DB="tesla" --rm --name apiscraper-export-influxdb influxdb:1.8
 
 echo Waiting for InfluxDB to start up in the container
 :waitForInflux
