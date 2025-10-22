@@ -9,7 +9,7 @@
   "author": "Olex S.",
   "license": "ISC",
   "dependencies": {
-    "csvtojson": "2.0.10",
+    "csvtojson": "2.0.12",
     "n-readlines": "1.0.1",
     "readline-sync": "1.4.10"
   },
