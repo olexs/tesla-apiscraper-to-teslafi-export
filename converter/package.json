@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "csvtojson": "2.0.14",
-    "n-readlines": "1.0.1",
+    "n-readlines": "3.1.0",
     "readline-sync": "1.4.10"
   },
   "private": true
